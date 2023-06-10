@@ -11,10 +11,10 @@
 | <img src="https://my.sbchild.top:81/omd/_" width="50%"> |
 |           https://my.sbchild.top:81 `/omd/_`            |
 
-|                                                      更改角色，原文和翻译                                                       |
-| :-----------------------------------------------------------------------------------------------------------------------------: |
-|                         https://my.sbchild.top:81 `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                          |
-| [不知道为什么它加载失败...点击这个链接试一下吧~](<https://my.sbchild.top:81/omd/_?c=lily&o=do not talk with me&t=不要和我讲话>) |
+|                                            更改角色，原文和翻译                                             |
+| :---------------------------------------------------------------------------------------------------------: |
+| <img src="https://my.sbchild.top:81/omd/_?c=lily&o=do%20not%20talk%20with%20me&t=不要和我讲话" width="50%"> |
+|               https://my.sbchild.top:81 `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                |
 
 ## 用途
 
