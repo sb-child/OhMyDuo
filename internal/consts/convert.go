@@ -1,11 +1,11 @@
 package consts
 
 import (
-	"my-duo/internal/utils"
+	"unicode"
 )
 
 func MyDuoCharactersFromString(s string) MyDuoCharacters {
-	switch utils.CapitalizeFirst(s) {
+	switch capitalizeFirst(s) {
 	case Duo.ToString():
 		return Duo
 	case Bea.ToString():
@@ -61,7 +61,7 @@ func (x MyDuoCharacters) ToString() string {
 }
 
 func MyDuoLanguageFromString(s string) MyDuoLanguages {
-	switch utils.CapitalizeFirst(s) {
+	switch capitalizeFirst(s) {
 	case "english", "en":
 		return English
 	}
@@ -74,4 +74,13 @@ func (x MyDuoLanguages) ToString() string {
 		return "English"
 	}
 	return "English"
+}
+
+func capitalizeFirst(s string) string {
+	for i, c := range s {
+		if unicode.IsLetter(c) {
+			return string(unicode.ToUpper(c)) + s[i+1:]
+		}
+	}
+	return s
 }

@@ -2,6 +2,7 @@ package utils
 
 import (
 	"context"
+	"my-duo/internal/consts"
 	"unicode"
 
 	"github.com/gogf/gf/v2/frame/g"
@@ -29,11 +30,29 @@ func GetResource(path string) []byte {
 	}
 	return nil
 }
-func CapitalizeFirst(s string) string {
-	for i, c := range s {
-		if unicode.IsLetter(c) {
-			return string(unicode.ToUpper(c)) + s[i+1:]
+
+func SplitText(s string) []consts.SpiltTextPiece {
+	var result []consts.SpiltTextPiece
+	var current string
+	for _, char := range s {
+		if char <= 127 { // ASCII character
+			if (unicode.IsSpace(char) || unicode.IsSymbol(char)) && current != "" {
+				result = append(result, consts.SpiltTextPiece{Text: current, Unicode: false})
+				result = append(result, consts.SpiltTextPiece{Text: string(char), Unicode: false})
+				current = ""
+			} else {
+				current += string(char)
+			}
+		} else { // Unicode character
+			if current != "" {
+				result = append(result, consts.SpiltTextPiece{Text: current, Unicode: false})
+				current = ""
+			}
+			result = append(result, consts.SpiltTextPiece{Text: string(char), Unicode: true})
 		}
 	}
-	return s
+	if current != "" {
+		result = append(result, consts.SpiltTextPiece{Text: current, Unicode: false})
+	}
+	return result
 }

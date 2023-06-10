@@ -29,3 +29,8 @@ type MyDuoElements struct {
 	OriginText     string          `json:"o"`
 	TranslatedText string          `json:"t"`
 }
+
+type SpiltTextPiece struct {
+	Text    string
+	Unicode bool
+}
