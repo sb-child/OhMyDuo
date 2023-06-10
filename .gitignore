@@ -9,6 +9,7 @@
 bin/
 **/.DS_Store
 main
+main.exe
 output/
 manifest/output/
 temp/
@@ -16,3 +17,6 @@ manifest/config/config.yaml
 config.yaml
 internal/packed/data.go
 oh-my-duo-bin
+oh-my-duo-bin.exe
+oh-my-duo-linux-amd64
+oh-my-duo-windows-amd64.exe

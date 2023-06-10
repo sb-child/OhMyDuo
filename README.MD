@@ -10,7 +10,7 @@
 
 ## 用途
 
-制作可爱贴纸！
+制作可爱贴纸！还可以在自己的主页上展示！
 
 ## 怎么用
 
@@ -18,8 +18,8 @@
 
 1. 在 config 目录下, 复制`config.example.toml`到`config.toml`, 按需编辑`config.toml`:
 
-- 更改监听端口和服务器 URL 地址前缀
-- 更改`oh-my-duo`设置
+- 更改 HTTP 监听端口
+- 更改`oh-my-duo`的 URL 地址前缀
 
 2. 编译
 
@@ -28,8 +28,8 @@
 
 3. 部署
 
-- 确保`oh-my-duo-bin`和`config.yaml`在同一目录下
-- 运行`oh-my-duo-bin`
+- 确保`oh-my-duo-*`和`config.yaml`在同一目录下
+- 运行`oh-my-duo-*`
 
 4. 使用
 
