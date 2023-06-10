@@ -61,24 +61,9 @@ func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements) []byte {
 	img := image.NewRGBA(sv.ImgSize)
 	sv.drawBackground(img)
 	sv.drawCharacter(img, elem.Character)
-
-	// posX := 80
-	// posY := 290
-	// bg := image.NewUniform(color.RGBA{75, 75, 75, 255})
-	// point := fixed.Point26_6{X: fixed.Int26_6(posX * 64), Y: fixed.Int26_6(posY * 64)}
-	// drawDst := image.NewRGBA(img.Bounds())
-	// drawer := &font.Drawer{
-	// 	Dst: drawDst,
-	// 	Src: bg,
-	// 	Face: truetype.NewFace(
-	// 		sv.FontAsciiBold,
-	// 		&truetype.Options{Size: 45}),
-	// 	Dot: point,
-	// }
-	// drawer.DrawString(elem.OriginText)
-	textImg := sv.drawText("2345678 345672asdew8 自慰")
+	// text
+	textImg := sv.drawText(elem.OriginText)
 	draw.Draw(img, img.Bounds(), textImg, textImg.Bounds().Min, draw.Over)
-
 	// encode to bytes
 	buff := new(bytes.Buffer)
 	png.Encode(buff, img)
@@ -99,30 +84,25 @@ func (sv *sMyDuo) drawTextOnImg(img *image.RGBA, f font.Face, s string, x fixed.
 	// text size = 64 px
 	// line spacing = 18 px
 	bg := image.NewUniform(color.RGBA{75, 75, 75, 255})
-	xp, yp := int(x/64), int(y/64)
-	println(xp)
-	println(yp)
-	point := fixed.Point26_6{X: 0, Y: 0}
-	drawDst := image.NewRGBA(img.Bounds())
+	point := fixed.Point26_6{X: x, Y: y}
 	drawer := &font.Drawer{
-		Dst:  drawDst,
+		Dst:  img,
 		Src:  bg,
 		Face: f,
 		Dot:  point,
 	}
 	drawer.DrawString(s)
-	draw.Draw(img, img.Bounds(), drawDst, drawDst.Bounds().Min.Add(image.Point{xp, yp}), draw.Over)
 }
 
 func (sv *sMyDuo) drawText(s string) *image.RGBA {
 	// max width = 635 px
 	// text size = 64 px
 	// line spacing = 18 px
-	img := image.NewRGBA(image.Rect(0, 0, 635, 64+18+64))
+	img := image.NewRGBA(image.Rect(0, 0, 635, 95))
 	faceAsciiBold := truetype.NewFace(sv.FontAsciiBold, &truetype.Options{Size: 45})
 	faceUnicode := truetype.NewFace(sv.FontUnicode, &truetype.Options{Size: 45})
 	pieces := utils.SplitText(s)
-	lines := 1
+	lines := 0
 	cursor := fixed.Int26_6(0 * 64)
 	max_width := fixed.Int26_6(635 * 64)
 	for _, v := range pieces {
@@ -140,9 +120,13 @@ func (sv *sMyDuo) drawText(s string) *image.RGBA {
 			lines++
 			cursor = 0
 		}
-		sv.drawTextOnImg(img, f, v.Text, cursor, fixed.Int26_6(lines*18*64))
+		sv.drawTextOnImg(img, f, v.Text, cursor, fixed.Int26_6(40*64+(lines*50*64)))
 		cursor += w
 	}
+	if lines == 0 {
+		crop := image.NewRGBA(image.Rect(0, 0, 635, 53))
+		draw.Draw(crop, crop.Bounds(), img, img.Bounds().Min, draw.Over)
+		return crop
+	}
 	return img
-	// font.MeasureString()
 }
