@@ -63,16 +63,33 @@ func New() *sMyDuo {
 }
 
 func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements) []byte {
+	// new image with background
 	img := image.NewRGBA(sv.ImgSize)
 	sv.drawBackground(img)
-	sv.drawCharacter(img, elem.Character)
+	// pre-calculation
+	flagImg := prepareImage("flags/" + elem.Language.ToString() + ".png")
+	originTextImg := sv.drawText(elem.OriginText)
+	translatedTextImg := sv.drawText(elem.TranslatedText)
+	flagImgY := flagImg.Bounds().Dy()
+	originTextImgY := originTextImg.Bounds().Dy()
+	translatedTextImgY := translatedTextImg.Bounds().Dy()
+	ySize := flagImgY + 20 + originTextImgY + 20 + translatedTextImgY
+	// yCenter 260px
+	yBoxFrom := 260 - ySize/2 - 42
+	yBoxTo := ySize/2 + 260 + 42
 	// box
-	sv.drawBox(img, 41, 97, 751, 422,
+	sv.drawBox(img, 41, yBoxFrom, 751, yBoxTo,
 		color.RGBA{229, 229, 229, 255},
 		color.RGBA{255, 255, 253, 255})
 	// text
-	textImg := sv.drawText(elem.OriginText)
-	draw.Draw(img, img.Bounds(), textImg, textImg.Bounds().Min, draw.Over)
+	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 42, Y: yBoxFrom + 42}),
+		flagImg, flagImg.Bounds().Min, draw.Over)
+	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 42, Y: yBoxFrom + 42 + 23 + flagImgY}),
+		originTextImg, originTextImg.Bounds().Min, draw.Over)
+	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 42, Y: yBoxFrom + 42 + 23 + flagImgY + 23 + originTextImgY}),
+		translatedTextImg, translatedTextImg.Bounds().Min, draw.Over)
+	// character
+	sv.drawCharacter(img, elem.Character)
 	// encode to bytes
 	buff := new(bytes.Buffer)
 	png.Encode(buff, img)

@@ -37,8 +37,8 @@ func ParamsHandler(r *ghttp.Request) {
 	language := r.GetQuery("l", consts.English.ToString()).String()
 	var origin, translated string
 	if r.GetQuery("o") == nil || r.GetQuery("t") == nil {
-		origin = "Hi there, This is Duo!"
-		translated = "大家好，我是多儿!"
+		origin = "Hi there, I'm Duo! Can you play with me?"
+		translated = "大家好，我是多儿！你能和我玩吗？"
 	} else {
 		origin = r.GetQuery("o").String()
 		translated = r.GetQuery("t").String()
