@@ -6,14 +6,14 @@
 
 ## demo
 
-| 默认内容 |
-|:-----: |
+|                        默认内容                         |
+| :-----------------------------------------------------: |
 | <img src="https://my.sbchild.top:81/omd/_" width="50%"> |
-| https://my.sbchild.top:81 `/omd/_` |
+|           https://my.sbchild.top:81 `/omd/_`            |
 
-| 更改角色，原文和翻译 |
-| :------: |
-| https://my.sbchild.top:81 `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话` |
+|                                                      更改角色，原文和翻译                                                       |
+| :-----------------------------------------------------------------------------------------------------------------------------: |
+|                         https://my.sbchild.top:81 `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                          |
 | [不知道为什么它加载失败...点击这个链接试一下吧~](<https://my.sbchild.top:81/omd/_?c=lily&o=do not talk with me&t=不要和我讲话>) |
 
 ## 用途
@@ -44,7 +44,25 @@
 
 - 打开浏览器，输入`你的域名或ip地址/你的地址前缀/_`，例如`https://my.sbchild.top:81/omd/_`
 - 如果浏览器显示了一张多儿的照片，恭喜你，它能用啦
-- 接下来你可以尝试把它部署到服务器上，使用Web服务器的反向代理功能，让你拥有属于自己的**OhMyDuo**!
+- 接下来你可以尝试把它部署到服务器上，使用 Web 服务器的反向代理功能，让你拥有属于自己的**OhMyDuo**!
+
+5. 到底怎么用
+
+- `/_` 默认
+- `/_?c=lily` 指定角色
+  - Duo
+  - Bea
+  - Vikram
+  - Oscar
+  - Junior
+  - Eddy
+  - Zari
+  - Lily
+  - Lin
+  - Lucy
+  - Falstaff
+- `/_?o=text...` 原文
+- `/_?t=text...` 译文(原文和译文需要一起指定)
 
 ## 框架
 
