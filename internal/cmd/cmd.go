@@ -14,10 +14,10 @@ var (
 	Main = gcmd.Command{
 		Name:  "main",
 		Usage: "main",
-		Brief: "start MyDuo backend",
+		Brief: "start OhMyDuo backend",
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
 			s := g.Server()
-			s.Group(g.Config().MustGet(ctx, "myduo.rootDir").String(), func(group *ghttp.RouterGroup) {
+			s.Group(g.Config().MustGet(ctx, "ohmyduo.rootDir").String(), func(group *ghttp.RouterGroup) {
 				group.GET("/b/:b64", duo.Base64Handler)
 				group.GET("/_", duo.ParamsHandler)
 			})

@@ -3,37 +3,12 @@ logger:
   level: "all"
   stdout: true
 # ----------------------------------------------------------------
-# 数据库设置
-database:
-  default:
-    host: "127.0.0.1" # 数据库ip地址
-    port: "5432" # 数据库端口
-    user: "sbc-services" # 用户名
-    pass: "passwd" # 密码
-    name: "myduo" # 数据库名称
-    type: "pgsql" # 数据库类型
-    link: ""
-    debug: ""
-    prefix: ""
-    dryRun: ""
-    charset: ""
-    weight: ""
-    timezone: ""
-    maxIdle: "10"
-    maxOpen: "100"
-    maxLifetime: "30s"
-    createdAt: ""
-    updatedAt: ""
-    deletedAt: ""
-    timeMaintainDisabled: ""
-    ctxStrict: ""
-# ----------------------------------------------------------------
 # 服务器设置
 server:
-  address: ":3264" # 监听端口
+  address: ":3265" # 监听端口
   openapiPath: "/_api.json"
   swaggerPath: "/_swagger"
 # ----------------------------------------------------------------
 # oh-my-duo 设置
-myduo:
-  rootDir: "/md" # MyDuo 根目录
+ohmyduo:
+  rootDir: "/ohmyduo" # OhMyDuo 服务器 URL 地址前缀

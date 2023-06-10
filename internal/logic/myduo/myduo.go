@@ -7,6 +7,7 @@ import (
 	"image/color"
 	"image/draw"
 	"image/png"
+	"math"
 	"oh-my-duo/internal/consts"
 	"oh-my-duo/internal/service"
 	"oh-my-duo/internal/utils"
@@ -62,7 +63,9 @@ func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements) []byte {
 	sv.drawBackground(img)
 	sv.drawCharacter(img, elem.Character)
 	// box
-	
+	sv.drawBox(img, 41, 97, 752, 422, 45,
+		color.RGBA{229, 229, 229, 255},
+		color.RGBA{255, 255, 253, 255})
 	// text
 	textImg := sv.drawText(elem.OriginText)
 	draw.Draw(img, img.Bounds(), textImg, textImg.Bounds().Min, draw.Over)
@@ -131,4 +134,66 @@ func (sv *sMyDuo) drawText(s string) *image.RGBA {
 		return crop
 	}
 	return img
+}
+
+func (sv *sMyDuo) drawBox(img *image.RGBA, x1, y1, x2, y2 int, r int, c color.RGBA, fill color.RGBA) {
+	for i := 0; i < 5; i++ {
+		sv.drawLine(img, x1+i, y1+r, x1+i, y2-r, c)
+		sv.drawLine(img, x2-i, y1+r, x2-i, y2-r, c)
+		sv.drawLine(img, x1+r, y1+i, x2-r, y1+i, c)
+		sv.drawLine(img, x1+r, y2-i, x2-r, y2-i, c)
+	}
+	sv.drawRing(img, x1+r, y1+r, r-5, r, c, math.Pi, math.Pi/2*3)
+}
+
+func (sv *sMyDuo) drawRing(img *image.RGBA, x, y, innerRadius, outerRadius int, c color.RGBA, start, end float64) {
+	if end < start {
+		end += 2 * math.Pi
+	}
+	for i := x - outerRadius; i <= x+outerRadius; i++ {
+		for j := y - outerRadius; j <= y+outerRadius; j++ {
+			dx := i - x
+			dy := j - y
+			distance := math.Sqrt(float64(dx*dx + dy*dy))
+			angle := math.Atan2(float64(dy), float64(dx))
+			if distance >= float64(innerRadius) && distance <= float64(outerRadius) {
+				if angle < 0 {
+					angle += 2 * math.Pi
+				}
+				if angle >= start && angle <= end {
+					img.SetRGBA(i, j, c)
+				}
+			}
+		}
+	}
+
+}
+
+func (sv *sMyDuo) drawLine(img *image.RGBA, x1, y1, x2, y2 int, c color.RGBA) {
+	dx := math.Abs(float64(x2 - x1))
+	dy := math.Abs(float64(y2 - y1))
+	sx := 1
+	if x1 > x2 {
+		sx = -1
+	}
+	sy := 1
+	if y1 > y2 {
+		sy = -1
+	}
+	err := dx - dy
+	for {
+		img.Set(x1, y1, c)
+		if x1 == x2 && y1 == y2 {
+			break
+		}
+		e2 := 2 * err
+		if e2 > -dy {
+			err -= dy
+			x1 += sx
+		}
+		if e2 < dx {
+			err += dx
+			y1 += sy
+		}
+	}
 }
