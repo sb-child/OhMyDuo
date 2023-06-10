@@ -1,5 +1,5 @@
 package logic
 
 import (
-	_ "my-duo/internal/logic/myduo"
+	_ "oh-my-duo/internal/logic/myduo"
 )

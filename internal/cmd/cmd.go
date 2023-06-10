@@ -7,7 +7,7 @@ import (
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
 
-	"my-duo/internal/controller/duo"
+	"oh-my-duo/internal/controller/duo"
 )
 
 var (

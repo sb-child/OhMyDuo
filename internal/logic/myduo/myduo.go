@@ -7,9 +7,9 @@ import (
 	"image/color"
 	"image/draw"
 	"image/png"
-	"my-duo/internal/consts"
-	"my-duo/internal/service"
-	"my-duo/internal/utils"
+	"oh-my-duo/internal/consts"
+	"oh-my-duo/internal/service"
+	"oh-my-duo/internal/utils"
 
 	"github.com/golang/freetype"
 	"github.com/golang/freetype/truetype"
@@ -61,6 +61,8 @@ func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements) []byte {
 	img := image.NewRGBA(sv.ImgSize)
 	sv.drawBackground(img)
 	sv.drawCharacter(img, elem.Character)
+	// box
+	
 	// text
 	textImg := sv.drawText(elem.OriginText)
 	draw.Draw(img, img.Bounds(), textImg, textImg.Bounds().Min, draw.Over)

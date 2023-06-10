@@ -7,7 +7,7 @@ package service
 
 import (
 	"context"
-	"my-duo/internal/consts"
+	"oh-my-duo/internal/consts"
 )
 
 type (

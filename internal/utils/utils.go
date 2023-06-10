@@ -2,7 +2,7 @@ package utils
 
 import (
 	"context"
-	"my-duo/internal/consts"
+	"oh-my-duo/internal/consts"
 	"unicode"
 
 	"github.com/gogf/gf/v2/frame/g"

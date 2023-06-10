@@ -1,4 +1,4 @@
-module my-duo
+module oh-my-duo
 
 go 1.20
 

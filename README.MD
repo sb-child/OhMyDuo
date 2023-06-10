@@ -1,4 +1,4 @@
-# MyDuo
+# OhMyDuo
 
 ~~你是 Duolingo 的忠实用户吗？~~
 
@@ -60,7 +60,7 @@ ALTER TABLE public.counter
 
 - 更改数据库地址, 端口号, 名称, 用户名和密码
 - 更改监听端口
-- 更改`my-duo`设置
+- 更改`oh-my-duo`设置
 
 3. 编译
 
@@ -70,8 +70,8 @@ ALTER TABLE public.counter
 
 4. 部署
 
-- 确保`my-duo-bin`和`config.yaml`在同一目录下
-- 运行`my-duo-bin`
+- 确保`oh-my-duo-bin`和`config.yaml`在同一目录下
+- 运行`oh-my-duo-bin`
 
 5. 使用
 

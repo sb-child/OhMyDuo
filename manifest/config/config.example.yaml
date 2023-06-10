@@ -34,6 +34,6 @@ server:
   openapiPath: "/_api.json"
   swaggerPath: "/_swagger"
 # ----------------------------------------------------------------
-# my-duo 设置
+# oh-my-duo 设置
 myduo:
   rootDir: "/md" # MyDuo 根目录

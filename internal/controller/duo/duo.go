@@ -2,9 +2,9 @@ package duo
 
 import (
 	"encoding/base64"
-	"my-duo/internal/consts"
-	"my-duo/internal/service"
 	"net/http"
+	"oh-my-duo/internal/consts"
+	"oh-my-duo/internal/service"
 
 	"github.com/gogf/gf/v2/errors/gcode"
 	"github.com/gogf/gf/v2/errors/gerror"
