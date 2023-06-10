@@ -52,14 +52,17 @@ func init() {
 }
 func New() *sMyDuo {
 	return &sMyDuo{
-		ImgSize:         image.Rect(0, 0, 793, 793),
-		FontUnicode:     prepareFont("OPPOSans-R.ttf"),
-		FontAsciiBold:   prepareFont("DIN Next Rounded LT W05 Bold.ttf"),
-		BackgroundImage: prepareImage("background-image.png"),
-		RoundMaskImage:  prepareImage("round-mask.png"),
-		BoxHeadImage:    prepareImage("box-head.png"),
-		BoxFootImage:    prepareImage("box-foot.png"),
+		ImgSize: image.Rect(0, 0, 793, 793),
 	}
+}
+
+func (sv *sMyDuo) Init(ctx context.Context) {
+	sv.FontUnicode = prepareFont("OPPOSans-R.ttf")
+	sv.FontAsciiBold = prepareFont("DIN Next Rounded LT W05 Bold.ttf")
+	sv.BackgroundImage = prepareImage("background-image.png")
+	sv.RoundMaskImage = prepareImage("round-mask.png")
+	sv.BoxHeadImage = prepareImage("box-head.png")
+	sv.BoxFootImage = prepareImage("box-foot.png")
 }
 
 func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements) []byte {

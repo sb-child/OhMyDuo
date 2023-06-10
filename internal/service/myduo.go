@@ -12,6 +12,7 @@ import (
 
 type (
 	IMyDuo interface {
+		Init(ctx context.Context)
 		Draw(ctx context.Context, elem consts.MyDuoElements) []byte
 	}
 )

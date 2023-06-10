@@ -8,6 +8,7 @@ import (
 	"github.com/gogf/gf/v2/os/gcmd"
 
 	"oh-my-duo/internal/controller/duo"
+	"oh-my-duo/internal/service"
 )
 
 var (
@@ -16,6 +17,7 @@ var (
 		Usage: "main",
 		Brief: "start OhMyDuo backend",
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
+			service.MyDuo().Init(ctx)
 			s := g.Server()
 			s.Group(g.Config().MustGet(ctx, "ohmyduo.rootDir").String(), func(group *ghttp.RouterGroup) {
 				group.GET("/b/:b64", duo.Base64Handler)
