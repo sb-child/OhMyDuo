@@ -1,0 +1,17 @@
+[Unit]
+Description=OhMyDuo service
+Documentation=https://github.com/sb-child/OhMyDuo
+After=system.slice multi-user.target network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=user
+SyslogIdentifier=user
+RestartSec=5s
+WorkingDirectory=/home/user/omd
+ExecStart=/home/user/omd/oh-my-duo-linux-amd64
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

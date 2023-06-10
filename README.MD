@@ -30,6 +30,7 @@
 
 - 确保`oh-my-duo-*`和`config.yaml`在同一目录下
 - 运行`oh-my-duo-*`
+- (可选) 按需修改`OhMyDuo.service`, 并拷贝至`/etc/systemd/system/OhMyDuo.service`, 即可创建一个 systemd 服务
 
 4. 使用
 
