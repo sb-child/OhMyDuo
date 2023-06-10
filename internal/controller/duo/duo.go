@@ -28,6 +28,7 @@ func Base64Handler(r *ghttp.Request) {
 	}
 	_ = ctx
 	_ = decoded
+	// todo
 }
 
 func ParamsHandler(r *ghttp.Request) {
@@ -50,7 +51,6 @@ func ParamsHandler(r *ghttp.Request) {
 		OriginText:     origin,
 		TranslatedText: translated,
 	}
-	_ = ctx
 	r.Response.Write(service.MyDuo().Draw(ctx, elem))
 	setHeader(r)
 }

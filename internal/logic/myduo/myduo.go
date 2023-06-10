@@ -167,37 +167,7 @@ func (sv *sMyDuo) drawBox(img *image.RGBA, x1, y1, x2, y2 int, c color.RGBA, fil
 	for i := 0; i < 5; i++ {
 		sv.drawLine(img, x1+i, y1+r, x1+i, y2-r, c)
 		sv.drawLine(img, x2-i, y1+r, x2-i, y2-r, c)
-		// sv.drawLine(img, x1+r, y1+i, x2-r, y1+i, c)
-		// sv.drawLine(img, x1+r, y2-i, x2-r, y2-i, c)
 	}
-	// for i := y1 + r + 5; i < ; i++ {
-
-	// }
-	// sv.drawRing(img, x1+r, y1+r, r-5, r, c, math.Pi, math.Pi/2*3)
-	// sv.drawRing(img, x1+r, y2-r, r-5, r, c, -math.Pi/2, math.Pi/2*3)
-}
-
-func (sv *sMyDuo) drawRing(img *image.RGBA, x, y, innerRadius, outerRadius int, c color.RGBA, start, end float64) {
-	if end < start {
-		end += 2 * math.Pi
-	}
-	for i := x - outerRadius; i <= x+outerRadius; i++ {
-		for j := y - outerRadius; j <= y+outerRadius; j++ {
-			dx := i - x
-			dy := j - y
-			distance := math.Sqrt(float64(dx*dx + dy*dy))
-			angle := math.Atan2(float64(dy), float64(dx))
-			if distance >= float64(innerRadius) && distance <= float64(outerRadius) {
-				if angle < 0 {
-					angle += 2 * math.Pi
-				}
-				if angle >= start && angle <= end {
-					img.SetRGBA(i, j, c)
-				}
-			}
-		}
-	}
-
 }
 
 func (sv *sMyDuo) drawLine(img *image.RGBA, x1, y1, x2, y2 int, c color.RGBA) {
