@@ -29,7 +29,12 @@
 1. 在 `manifest/config` 目录下, 复制`config.example.toml`到`config.toml`, 按需编辑`config.toml`:
 
 - 更改 HTTP 监听端口
-- 更改`oh-my-duo`的 URL 地址前缀
+- 更改 `rootDir` 为 URL 地址前缀
+- 更改 `httpServer`，如果不需要启用 HTTP 服务，请将值修改为 `false`
+- 更改 `telegramBotToken`，如果不需要启用 Telegram Bot，请将值修改为空
+- 更改 `telegramBotHttpTimeout`，推荐设为 `3000`
+- 更改 `telegramBotHttpProxy`，如果不需要启用 Telegram 代理，请将值修改为空
+- 更改 `telegramBotImageServer` 为 Telegram 使用的 OhMyDuo 地址
 
 2. 编译
 
@@ -41,7 +46,7 @@
 - 确保`oh-my-duo-*`和`config.yaml`在同一目录下
 - 运行`oh-my-duo-*`
 - (可选) 按需修改`OhMyDuo.service`, 并拷贝至`/etc/systemd/system/OhMyDuo.service`, 即可创建一个 systemd 服务
-- 接下来你可以尝试使用 Web 服务器的反向代理功能，让你拥有属于自己的**Oh My Duo**!
+- 接下来你可以尝试使用 Web 服务器的反向代理功能，可以方便使用，以及允许 Telegram 从这个服务器请求图片!
 
 4. 测试
 
@@ -77,6 +82,12 @@
 - `/_/Can-you-speak--English%3f|你会讲英语吗？` 原文为`Can you speak-English?`, 译文为`你会讲英语吗？`。问号`?`使用`%3f`代替, 连字符`-`使用`--`代替
 
 - `/_/lucy|Can-you-speak--English%3f|你会讲英语吗？` 指定`Lucy`角色, 原文为`Can you speak-English?`, 译文为`你会讲英语吗？`
+
+但是在 Telegram Bot 中，需要这样使用:
+
+- `@some_bot Hello world|你好 世界` 列出所有角色的图片, 原文为`Hello world`, 译文为`你好 世界`
+
+- `@some_bot Can u speak english|你能讲英语嘛|zari` 使用 Zari 角色, 原文为`Can u speak english`, 译文为`你能讲英语嘛`
 
 ## TODO
 

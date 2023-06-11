@@ -28,8 +28,15 @@ Make some cute stickers, and show it on your site easily!
 
 1. In `manifest/config`, copy `config.example.toml` to `config.toml`, then edit it:
 
+- `httpServer`: if you need to enable this http server, then set to `true` otherwise `false`
+- set `telegramBotToken` to your telegram bot token. if you don't need this, set the value to empty
+
 - change the HTTP server address
 - change the `rootDir` of `ohmyduo`
+
+- set `telegramBotHttpTimeout` to `3000`, depends on your networking
+- set `telegramBotHttpProxy` to your proxy server address. if you don't need this, set the value to empty
+- set `telegramBotImageServer` to a Oh My Duo http server URL
 
 2. Compile
 
@@ -41,7 +48,7 @@ Make some cute stickers, and show it on your site easily!
 - On your server, make sure `oh-my-duo-*` and `config.yaml` are at the same directory
 - Run `oh-my-duo-*`
 - (optional) modify `OhMyDuo.service`, then copy to `/etc/systemd/system/OhMyDuo.service` to create a systemd service
-- Now you can configure the reverse proxy settings of your web server
+- Now you can configure the reverse proxy settings of your web server, then you can let Telegram Bot use your server to process requests
 
 4. Test
 
@@ -77,6 +84,12 @@ There are two ways to use this service for now:
 - `/_/Can-you-speak--English%3f|你会讲英语吗？` origin text is `Can you speak-English?`, translated text is `你会讲英语吗？`. replace `?` to `%3f`, and replace `-` to `--`
 
 - `/_/lucy|Can-you-speak--English%3f|你会讲英语吗？` set the character to `Lucy`, origin text is `Can you speak-English?`, translated text is `你会讲英语吗？`
+
+But in Telegram:
+
+- `@some_bot Hello world|你好 世界` list pictures of all characters, origin text is `Hello world`, translated text is `你好 世界`
+
+- `@some_bot Can u speak english|你能讲英语嘛|zari` use the Zari character, origin text is `Can u speak english`, translated text is `你能讲英语嘛`
 
 ## TODO
 
