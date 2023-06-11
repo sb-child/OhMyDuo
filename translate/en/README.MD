@@ -2,7 +2,7 @@
 
 ## [> 查看中文版 README <](../../README.MD)
 
-Are you a loyal Duolingo user?
+Are you a loyal [Duolingo](https://duolingo.com/) user?
 
 This repository can help you generate custom Duolingo stickers!
 

@@ -2,7 +2,7 @@
 
 ## [> View the English version of README <](./translate/en/)
 
-~~你是 Duolingo 的忠实用户吗？~~
+~~你是 [Duolingo](https://duolingo.com/) 的忠实用户吗？~~
 
 本 Repo 可以帮助你生成自定义的可爱贴纸！
 
