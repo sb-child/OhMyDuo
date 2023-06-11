@@ -10,12 +10,14 @@ import (
 	"github.com/gogf/gf/v2/errors/gcode"
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/util/grand"
 )
 
 func setHeader(r *ghttp.Request) {
-	r.Response.Header().Set("Cache-Control", "max-age=3600")
+	r.Response.Header().Set("Cache-Control", "max-age=60")
 	r.Response.Header().Set("Content-Type", "image/png")
-	r.Response.Header().Set("Content-Disposition", "inline; filename=\"oh-my-duo-saved.png\"")
+	r.Response.Header().Set("Content-Disposition",
+		"inline; filename=\"oh-my-duo-"+grand.S(8)+".png\"")
 }
 
 func Base64Handler(r *ghttp.Request) {
