@@ -18,7 +18,7 @@ This repository can help you generate custom Duolingo stickers!
 | <img src="https://my.sbchild.top:81/omd/_?c=lily&o=do%20not%20talk%20with%20me&t=不要和我讲话&x=fyufyudtry" width="50%"> |
 |                      https://my.sbchild.top:81 `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                      |
 
-## What is it
+## What can it do
 
 Make some cute stickers, and show it on your site easily!
 
