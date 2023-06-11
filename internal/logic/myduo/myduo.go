@@ -78,18 +78,18 @@ func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements) []byte {
 	translatedTextImgY := translatedTextImg.Bounds().Dy()
 	ySize := flagImgY + 20 + originTextImgY + 20 + translatedTextImgY
 	// yCenter 260px
-	yBoxFrom := 260 - ySize/2 - 42
-	yBoxTo := ySize/2 + 260 + 42
+	yBoxFrom := 260 - ySize/2 - 40
+	yBoxTo := ySize/2 + 260 + 36
 	// box
 	sv.drawBox(img, 41, yBoxFrom, 751, yBoxTo,
 		color.RGBA{229, 229, 229, 255},
 		color.RGBA{255, 255, 253, 255})
 	// text
-	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 42, Y: yBoxFrom + 42}),
+	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 41, Y: yBoxFrom + 42}),
 		flagImg, flagImg.Bounds().Min, draw.Over)
-	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 42, Y: yBoxFrom + 42 + 23 + flagImgY}),
+	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 41 - 3, Y: yBoxFrom + 42 + 22 + flagImgY}),
 		originTextImg, originTextImg.Bounds().Min, draw.Over)
-	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 42, Y: yBoxFrom + 42 + 23 + flagImgY + 23 + originTextImgY}),
+	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 41 - 3, Y: yBoxFrom + 42 + 22 + flagImgY + 15 + originTextImgY}),
 		translatedTextImg, translatedTextImg.Bounds().Min, draw.Over)
 	// character
 	sv.drawCharacter(img, elem.Character)
@@ -127,12 +127,12 @@ func (sv *sMyDuo) drawText(s string) *image.RGBA {
 	// max width = 635 px
 	// text size = 64 px
 	// line spacing = 18 px
-	img := image.NewRGBA(image.Rect(0, 0, 635, 95))
-	faceAsciiBold := truetype.NewFace(sv.FontAsciiBold, &truetype.Options{Size: 45})
-	faceUnicode := truetype.NewFace(sv.FontUnicode, &truetype.Options{Size: 45})
+	img := image.NewRGBA(image.Rect(0, 0, 635, 100))
+	faceAsciiBold := truetype.NewFace(sv.FontAsciiBold, &truetype.Options{Size: 44})
+	faceUnicode := truetype.NewFace(sv.FontUnicode, &truetype.Options{Size: 38})
 	pieces := utils.SplitText(s)
 	lines := 0
-	cursor := fixed.Int26_6(0 * 64)
+	cursor := fixed.Int26_6(3 * 64)
 	max_width := fixed.Int26_6(635 * 64)
 	for _, v := range pieces {
 		var w fixed.Int26_6 = 0
@@ -147,7 +147,7 @@ func (sv *sMyDuo) drawText(s string) *image.RGBA {
 		if cursor+w > max_width {
 			// next line
 			lines++
-			cursor = 0
+			cursor = fixed.Int26_6(3 * 64)
 		}
 		sv.drawTextOnImg(img, f, v.Text, cursor, fixed.Int26_6(40*64+(lines*50*64)))
 		cursor += w
