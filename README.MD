@@ -40,11 +40,11 @@
 - 运行`oh-my-duo-*`
 - (可选) 按需修改`OhMyDuo.service`, 并拷贝至`/etc/systemd/system/OhMyDuo.service`, 即可创建一个 systemd 服务
 
-4. 测试和部署
+4. 测试
 
 - 打开浏览器，输入`你的域名或ip地址/你的地址前缀/_`，例如`https://my.sbchild.top:81/omd/_`
 - 如果浏览器显示了一张多儿的照片，恭喜你，它能用啦
-- 接下来你可以尝试把它部署到服务器上，使用 Web 服务器的反向代理功能，让你拥有属于自己的**Oh My Duo**!
+- 接下来你可以尝试使用 Web 服务器的反向代理功能，让你拥有属于自己的**Oh My Duo**!
 
 5. 到底怎么用
 
