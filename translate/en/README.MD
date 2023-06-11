@@ -1,6 +1,6 @@
 # Oh My Duo
 
-## [> 查看中文版 README <](./README.MD)
+## [> 查看中文版 README <](../../README.MD)
 
 ~~Are you a loyal Duolingo user? ~~
 

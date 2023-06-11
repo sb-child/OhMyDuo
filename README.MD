@@ -1,6 +1,6 @@
 # Oh My Duo
 
-## [> View the English version of README <](./README-en.MD)
+## [> View the English version of README <](./translate/en/)
 
 ~~你是 Duolingo 的忠实用户吗？~~
 
