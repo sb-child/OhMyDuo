@@ -74,9 +74,9 @@ There are two ways to use this service for now:
 
 - `/_/Hello-world|你好-世界` use the default character, origin text is `Hello world`, translated text is `你好 世界`. replace the space to `-`
 
-- `/_/Can-you-speak--English%3f|你会讲英语吗？` origin text is `Can you speak-English?`, translated text is `你好 世界`. replace `?` to `%3f`, and replace `-` to `--`
+- `/_/Can-you-speak--English%3f|你会讲英语吗？` origin text is `Can you speak-English?`, translated text is `你会讲英语吗？`. replace `?` to `%3f`, and replace `-` to `--`
 
-- `/_/lucy|Can-you-speak--English%3f|你会讲英语吗？` set the character to `Lucy`, origin text is `Can you speak-English?`, translated text is `你好 世界`
+- `/_/lucy|Can-you-speak--English%3f|你会讲英语吗？` set the character to `Lucy`, origin text is `Can you speak-English?`, translated text is `你会讲英语吗？`
 
 ## TODO
 

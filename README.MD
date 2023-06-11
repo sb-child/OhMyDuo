@@ -74,9 +74,9 @@
 
 - `/_/Hello-world|你好-世界` 默认使用 Duo 角色, 原文为`Hello world`, 译文为`你好 世界`。空格使用`-`代替
 
-- `/_/Can-you-speak--English%3f|你会讲英语吗？` 原文为`Can you speak-English?`, 译文为`你好 世界`。问号`?`使用`%3f`代替, 连字符`-`使用`--`代替
+- `/_/Can-you-speak--English%3f|你会讲英语吗？` 原文为`Can you speak-English?`, 译文为`你会讲英语吗？`。问号`?`使用`%3f`代替, 连字符`-`使用`--`代替
 
-- `/_/lucy|Can-you-speak--English%3f|你会讲英语吗？` 指定`Lucy`角色, 原文为`Can you speak-English?`, 译文为`你好 世界`
+- `/_/lucy|Can-you-speak--English%3f|你会讲英语吗？` 指定`Lucy`角色, 原文为`Can you speak-English?`, 译文为`你会讲英语吗？`
 
 ## TODO
 
