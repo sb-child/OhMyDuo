@@ -20,8 +20,9 @@ var (
 			service.MyDuo().Init(ctx)
 			s := g.Server()
 			s.Group(g.Config().MustGet(ctx, "ohmyduo.rootDir").String(), func(group *ghttp.RouterGroup) {
-				group.GET("/b/:b64", duo.Base64Handler)
 				group.GET("/_", duo.ParamsHandler)
+				group.GET("/_/:prompt", duo.PromptHandler)
+				group.GET("/b/:b64", duo.Base64Handler)
 			})
 			s.Run()
 			return nil
