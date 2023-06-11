@@ -15,6 +15,7 @@ import (
 func setHeader(r *ghttp.Request) {
 	r.Response.Header().Set("Cache-Control", "max-age=3600")
 	r.Response.Header().Set("Content-Type", "image/png")
+	r.Response.Header().Set("Content-Disposition", "inline; filename=\"oh-my-duo-saved.png\"")
 }
 
 func Base64Handler(r *ghttp.Request) {
