@@ -1,6 +1,7 @@
 package consts
 
 import (
+	"net/url"
 	"unicode"
 )
 
@@ -83,4 +84,19 @@ func capitalizeFirst(s string) string {
 		}
 	}
 	return s
+}
+
+func boolToString(x bool) string {
+	if x {
+		return "true"
+	}
+	return "false"
+}
+
+func (x MyDuoElements) ToUrl(base string) string {
+	return base + "/_?l=" + url.QueryEscape(x.Language.ToString()) +
+		"&c=" + url.QueryEscape(x.Character.ToString()) +
+		"&o=" + url.QueryEscape(x.OriginText) +
+		"&t=" + url.QueryEscape(x.TranslatedText) +
+		"&j=" + url.QueryEscape(boolToString(x.ToJpeg))
 }

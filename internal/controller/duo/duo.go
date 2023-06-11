@@ -13,11 +13,17 @@ import (
 	"github.com/gogf/gf/v2/util/grand"
 )
 
-func setHeader(r *ghttp.Request) {
+func setHeader(r *ghttp.Request, toJpeg bool) {
 	r.Response.Header().Set("Cache-Control", "max-age=60")
-	r.Response.Header().Set("Content-Type", "image/png")
-	r.Response.Header().Set("Content-Disposition",
-		"inline; filename=\"oh-my-duo-"+grand.S(8)+".png\"")
+	if toJpeg {
+		r.Response.Header().Set("Content-Type", "image/jpeg")
+		r.Response.Header().Set("Content-Disposition",
+			"inline; filename=\"oh-my-duo-"+grand.S(8)+".jpg\"")
+	} else {
+		r.Response.Header().Set("Content-Type", "image/png")
+		r.Response.Header().Set("Content-Disposition",
+			"inline; filename=\"oh-my-duo-"+grand.S(8)+".png\"")
+	}
 }
 
 func Base64Handler(r *ghttp.Request) {
@@ -77,11 +83,12 @@ func PromptHandler(r *ghttp.Request) {
 		TranslatedText: translated,
 	}
 	r.Response.Write(service.MyDuo().Draw(ctx, elem))
-	setHeader(r)
+	setHeader(r, false)
 }
 
 func ParamsHandler(r *ghttp.Request) {
 	ctx := r.GetCtx()
+	toJpeg := r.GetQuery("j", false).Bool()
 	rounded := r.GetQuery("r", true).Bool()
 	character := r.GetQuery("c", consts.Duo.ToString()).String()
 	language := r.GetQuery("l", consts.English.ToString()).String()
@@ -100,6 +107,6 @@ func ParamsHandler(r *ghttp.Request) {
 		OriginText:     origin,
 		TranslatedText: translated,
 	}
-	r.Response.Write(service.MyDuo().Draw(ctx, elem))
-	setHeader(r)
+	r.Response.Write(service.MyDuo().Draw(ctx, elem, toJpeg))
+	setHeader(r, toJpeg)
 }

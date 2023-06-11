@@ -10,6 +10,7 @@ require (
 )
 
 require (
+	github.com/go-telegram/bot v0.7.11 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	go.opentelemetry.io/otel/metric v1.16.0 // indirect
 )

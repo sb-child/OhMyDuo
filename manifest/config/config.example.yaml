@@ -11,4 +11,9 @@ server:
 # ----------------------------------------------------------------
 # oh-my-duo 设置
 ohmyduo:
+  telegramBotToken: "YOUR_BOT_TOKEN_FROM_BOTFATHER"
+  telegramBotHttpTimeout: 10000 # 1000ms = 1s
+  telegramBotHttpProxy: "" # support http:// and socks5:// currently
+  telegramBotImageServer: "https://xxxxxx.xxxx/ohmyduo" # your OhMyDuo server or others...
+  httpServer: true
   rootDir: "/ohmyduo" # OhMyDuo 服务器 URL 地址前缀

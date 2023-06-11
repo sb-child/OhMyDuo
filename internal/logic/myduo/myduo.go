@@ -6,6 +6,7 @@ import (
 	"image"
 	"image/color"
 	"image/draw"
+	"image/jpeg"
 	"image/png"
 	"math"
 	"oh-my-duo/internal/consts"
@@ -65,7 +66,7 @@ func (sv *sMyDuo) Init(ctx context.Context) {
 	sv.BoxFootImage = prepareImage("box-foot.png")
 }
 
-func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements) []byte {
+func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements, toJpeg ...bool) []byte {
 	// new image with background
 	img := image.NewRGBA(sv.ImgSize)
 	sv.drawBackground(img)
@@ -95,7 +96,11 @@ func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements) []byte {
 	sv.drawCharacter(img, elem.Character)
 	// encode to bytes
 	buff := new(bytes.Buffer)
-	png.Encode(buff, img)
+	if len(toJpeg) >= 1 && toJpeg[0] {
+		jpeg.Encode(buff, img, &jpeg.Options{Quality: 85})
+	} else {
+		png.Encode(buff, img)
+	}
 	return buff.Bytes()
 }
 
