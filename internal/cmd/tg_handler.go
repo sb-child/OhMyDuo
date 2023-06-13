@@ -34,6 +34,7 @@ func TelegramDefaultHandler(ctx context.Context, bot *tgbot.Bot, update *tgmodel
 }
 func TelegramParseDuoCommand(ctx context.Context, cmd string) (urls []string, characters []string) {
 	serverBase := g.Config().MustGet(ctx, "ohmyduo.telegramBotImageServer", "").String()
+	cmd = strings.TrimSpace(cmd)
 	if len(cmd) <= 0 {
 		// give some help text
 		return []string{consts.MyDuoElements{
@@ -45,6 +46,9 @@ func TelegramParseDuoCommand(ctx context.Context, cmd string) (urls []string, ch
 		}.ToUrl(serverBase)}, []string{consts.Lin.ToString()}
 	}
 	cmds := strings.Split(cmd, "|")
+	for i := 0; i < len(cmds); i++ {
+		cmds[i] = strings.TrimSpace(cmds[i])
+	}
 	switch len(cmds) {
 	case 1:
 		// give some help text
@@ -103,6 +107,16 @@ func TelegramSendDuoImage(ctx context.Context, bot *tgbot.Bot, req *tgmodels.Inl
 	results := make([]tgmodels.InlineQueryResult, 0)
 	r, rr := TelegramParseDuoCommand(ctx, cmd)
 	for i, v := range r {
+		kbd := [][]tgmodels.InlineKeyboardButton{
+			{{
+				Text:                         "俺也试试|Try this prompt",
+				SwitchInlineQueryCurrentChat: cmd,
+			}},
+			{{
+				Text: "仓库地址|View this repository",
+				URL:  "https://github.com/sb-child/OhMyDuo",
+			}},
+		}
 		results = append(results, &tgmodels.InlineQueryResultPhoto{
 			ID:           grand.S(64),
 			PhotoURL:     v,
@@ -112,6 +126,7 @@ func TelegramSendDuoImage(ctx context.Context, bot *tgbot.Bot, req *tgmodels.Inl
 			Title:        rr[i],
 			Description:  "Oh My Duo~",
 			Caption:      rr[i] + " | Result from github sb-child/OhMyDuo",
+			ReplyMarkup:  tgmodels.InlineKeyboardMarkup{InlineKeyboard: kbd},
 		})
 		// g.Log().Info(ctx, v)
 	}
