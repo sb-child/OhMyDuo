@@ -1,8 +1,10 @@
 package consts
 
 import (
-	"net/url"
+	"encoding/base64"
 	"unicode"
+
+	"github.com/gogf/gf/v2/encoding/gjson"
 )
 
 func MyDuoCharactersFromString(s string) MyDuoCharacters {
@@ -86,17 +88,10 @@ func capitalizeFirst(s string) string {
 	return s
 }
 
-func boolToString(x bool) string {
-	if x {
-		return "true"
-	}
-	return "false"
-}
-
 func (x MyDuoElements) ToUrl(base string) string {
-	return base + "/_?l=" + url.QueryEscape(x.Language.ToString()) +
-		"&c=" + url.QueryEscape(x.Character.ToString()) +
-		"&o=" + url.QueryEscape(x.OriginText) +
-		"&t=" + url.QueryEscape(x.TranslatedText) +
-		"&j=" + url.QueryEscape(boolToString(x.ToJpeg))
+	enc, err := gjson.Encode(x)
+	if err != nil {
+		return base + "/_"
+	}
+	return base + "/b/" + base64.RawURLEncoding.EncodeToString(enc)
 }

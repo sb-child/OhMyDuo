@@ -7,6 +7,7 @@ import (
 	"oh-my-duo/internal/service"
 	"strings"
 
+	"github.com/gogf/gf/v2/encoding/gjson"
 	"github.com/gogf/gf/v2/errors/gcode"
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -36,9 +37,17 @@ func Base64Handler(r *ghttp.Request) {
 		r.Response.Writeln("BASE64 decode failed")
 		r.Exit()
 	}
-	_ = ctx
-	_ = decoded
-	// todo
+	data := consts.MyDuoElements{}
+	if err = gjson.DecodeTo(decoded, &data); err != nil {
+		r.SetError(gerror.NewCode(gcode.CodeInvalidParameter, "json decode failed"))
+		r.Response.Status = http.StatusInternalServerError
+		r.Response.Writeln("json decode failed")
+		r.Exit()
+	}
+	data.Character = consts.MyDuoCharactersFromString(data.Character.ToString())
+	data.Language = consts.MyDuoLanguageFromString(data.Language.ToString())
+	r.Response.Write(service.MyDuo().Draw(ctx, data, data.ToJpeg))
+	setHeader(r, data.ToJpeg)
 }
 
 func PromptHandler(r *ghttp.Request) {
