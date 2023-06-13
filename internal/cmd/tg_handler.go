@@ -34,7 +34,6 @@ func TelegramDefaultHandler(ctx context.Context, bot *tgbot.Bot, update *tgmodel
 }
 func TelegramParseDuoCommand(ctx context.Context, cmd string) (urls []string, characters []string) {
 	serverBase := g.Config().MustGet(ctx, "ohmyduo.telegramBotImageServer", "").String()
-	cmd = strings.TrimSpace(cmd)
 	if len(cmd) <= 0 {
 		// give some help text
 		return []string{consts.MyDuoElements{
@@ -105,18 +104,20 @@ func TelegramParseDuoCommand(ctx context.Context, cmd string) (urls []string, ch
 
 func TelegramSendDuoImage(ctx context.Context, bot *tgbot.Bot, req *tgmodels.InlineQuery, cmd string) {
 	results := make([]tgmodels.InlineQueryResult, 0)
+	cmd = strings.TrimSpace(cmd)
 	r, rr := TelegramParseDuoCommand(ctx, cmd)
 	for i, v := range r {
-		kbd := [][]tgmodels.InlineKeyboardButton{
-			{{
+		kbd := [][]tgmodels.InlineKeyboardButton{}
+		if len(cmd) > 0 {
+			kbd = append(kbd, []tgmodels.InlineKeyboardButton{{
 				Text:                         "俺也试试|Try this prompt",
 				SwitchInlineQueryCurrentChat: cmd,
-			}},
-			{{
-				Text: "仓库地址|View this repository",
-				URL:  "https://github.com/sb-child/OhMyDuo",
-			}},
+			}})
 		}
+		kbd = append(kbd, []tgmodels.InlineKeyboardButton{{
+			Text: "仓库地址|View this repository",
+			URL:  "https://github.com/sb-child/OhMyDuo",
+		}})
 		results = append(results, &tgmodels.InlineQueryResultPhoto{
 			ID:           grand.S(64),
 			PhotoURL:     v,
