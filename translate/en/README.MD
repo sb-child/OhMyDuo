@@ -93,6 +93,8 @@ But in Telegram:
 
 ## TODO
 
+- [ ] emoji support 🙂
+- [ ] Japanese support
 - [ ] split very long words automatically
 - [ ] more language flags (PR welcome)
 
