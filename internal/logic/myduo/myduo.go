@@ -24,6 +24,7 @@ type sMyDuo struct {
 	ImgSize         image.Rectangle
 	FontUnicode     *sfnt.Font
 	FontAsciiBold   *sfnt.Font
+	FontEmoji       *sfnt.Font
 	BackgroundImage image.Image
 	RoundMaskImage  image.Image
 	BoxHeadImage    image.Image
@@ -61,6 +62,7 @@ func New() *sMyDuo {
 func (sv *sMyDuo) Init(ctx context.Context) {
 	sv.FontUnicode = prepareFont("NotoSansSC-Regular.otf")
 	sv.FontAsciiBold = prepareFont("DIN Next Rounded LT W05 Bold.ttf")
+	sv.FontEmoji = prepareFont("NotoColorEmoji-SVG.otf")
 	sv.BackgroundImage = prepareImage("background-image.png")
 	sv.RoundMaskImage = prepareImage("round-mask.png")
 	sv.BoxHeadImage = prepareImage("box-head.png")
