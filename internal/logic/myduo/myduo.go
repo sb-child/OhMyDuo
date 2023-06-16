@@ -59,7 +59,7 @@ func New() *sMyDuo {
 }
 
 func (sv *sMyDuo) Init(ctx context.Context) {
-	sv.FontUnicode = prepareFont("OPPOSans-R.ttf")
+	sv.FontUnicode = prepareFont("NotoSansSC-Regular.otf")
 	sv.FontAsciiBold = prepareFont("DIN Next Rounded LT W05 Bold.ttf")
 	sv.BackgroundImage = prepareImage("background-image.png")
 	sv.RoundMaskImage = prepareImage("round-mask.png")
