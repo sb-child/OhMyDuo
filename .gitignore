@@ -14,7 +14,6 @@ output/
 manifest/output/
 temp/
 manifest/config/config.yaml
-config.yaml
 internal/packed/data.go
 oh-my-duo-bin
 oh-my-duo-bin.exe

@@ -1,0 +1,12 @@
+# gfcli 设置, 仅供开发使用
+gfcli:
+  build:
+    name: "oh-my-duo"
+    arch: "amd64"
+    system: "linux,windows"
+    mod: "none"
+    packSrc: "resource"
+    # packSrc: "resource,manifest"
+    version: "v1.0.0"
+    output: "./oh-my-duo-bin"
+    extra: "-trimpath"
