@@ -13,24 +13,25 @@ import (
 	"oh-my-duo/internal/service"
 	"oh-my-duo/internal/utils"
 
-	"github.com/golang/freetype"
-	"github.com/golang/freetype/truetype"
+	"github.com/gogf/gf/v2/frame/g"
 	"golang.org/x/image/font"
+	"golang.org/x/image/font/opentype"
+	"golang.org/x/image/font/sfnt"
 	"golang.org/x/image/math/fixed"
 )
 
 type sMyDuo struct {
 	ImgSize         image.Rectangle
-	FontUnicode     *truetype.Font
-	FontAsciiBold   *truetype.Font
+	FontUnicode     *sfnt.Font
+	FontAsciiBold   *sfnt.Font
 	BackgroundImage image.Image
 	RoundMaskImage  image.Image
 	BoxHeadImage    image.Image
 	BoxFootImage    image.Image
 }
 
-func prepareFont(path string) *truetype.Font {
-	tt, err := freetype.ParseFont(utils.GetResource("resource/public/resource/font/" + path))
+func prepareFont(path string) *sfnt.Font {
+	tt, err := opentype.Parse(utils.GetResource("resource/public/resource/font/" + path))
 	if err != nil {
 		panic(err)
 	}
@@ -96,6 +97,7 @@ func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements, toJpeg ..
 	sv.drawCharacter(img, elem.Character)
 	// encode to bytes
 	buff := new(bytes.Buffer)
+	// buff.Grow(64 * 1024) // 64 kb
 	if len(toJpeg) >= 1 && toJpeg[0] {
 		jpeg.Encode(buff, img, &jpeg.Options{Quality: 85})
 	} else {
@@ -133,8 +135,21 @@ func (sv *sMyDuo) drawText(s string) *image.RGBA {
 	// text size = 64 px
 	// line spacing = 18 px
 	img := image.NewRGBA(image.Rect(0, 0, 635, 100))
-	faceAsciiBold := truetype.NewFace(sv.FontAsciiBold, &truetype.Options{Size: 44})
-	faceUnicode := truetype.NewFace(sv.FontUnicode, &truetype.Options{Size: 38})
+	faceAsciiBold, err := opentype.NewFace(sv.FontAsciiBold, &opentype.FaceOptions{
+		Size:    44,
+		DPI:     72,
+		Hinting: font.HintingFull,
+	})
+	if err != nil {
+		g.Log().Fatal(context.TODO(), "Failed to load font face: "+err.Error())
+	}
+	faceUnicode, err := opentype.NewFace(sv.FontUnicode, &opentype.FaceOptions{
+		Size:    38,
+		DPI:     72,
+		Hinting: font.HintingFull})
+	if err != nil {
+		g.Log().Fatal(context.TODO(), "Failed to load font face: "+err.Error())
+	}
 	pieces := utils.SplitText(s)
 	lines := 0
 	cursor := fixed.Int26_6(3 * 64)

@@ -21,6 +21,7 @@ var tgBotLock sync.WaitGroup
 
 func StartHttpServer(ctx context.Context) {
 	s := g.Server("ohmyduo-http")
+	// s.EnablePProf()
 	s.Group(g.Config().MustGet(ctx, "ohmyduo.rootDir").String(), func(group *ghttp.RouterGroup) {
 		group.GET("/_", duo.ParamsHandler)
 		group.GET("/_/:prompt", duo.PromptHandler)
