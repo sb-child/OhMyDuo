@@ -81,9 +81,15 @@ func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements, toJpeg ..
 	originTextImgY := originTextImg.Bounds().Dy()
 	translatedTextImgY := translatedTextImg.Bounds().Dy()
 	ySize := flagImgY + 20 + originTextImgY + 20 + translatedTextImgY
+	translatedTextFix := 15
+	yBoxFix := -2
+	if originTextImgY >= 100 {
+		yBoxFix = 3
+		translatedTextFix = 20
+	}
 	// yCenter 260px
-	yBoxFrom := 260 - ySize/2 - 40
-	yBoxTo := ySize/2 + 260 + 36
+	yBoxFrom := 260 - ySize/2 - 39 - 2
+	yBoxTo := ySize/2 + 260 + 32 + yBoxFix
 	// box
 	sv.drawBox(img, 41, yBoxFrom, 751, yBoxTo,
 		color.RGBA{229, 229, 229, 255},
@@ -93,7 +99,7 @@ func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements, toJpeg ..
 		flagImg, flagImg.Bounds().Min, draw.Over)
 	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 41 - 3, Y: yBoxFrom + 42 + 22 + flagImgY}),
 		originTextImg, originTextImg.Bounds().Min, draw.Over)
-	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 41 - 3, Y: yBoxFrom + 42 + 22 + flagImgY + 15 + originTextImgY}),
+	draw.Draw(img, img.Bounds().Add(image.Point{X: 41 + 41 - 3, Y: yBoxFrom + 42 + 22 + flagImgY + translatedTextFix + originTextImgY}),
 		translatedTextImg, translatedTextImg.Bounds().Min, draw.Over)
 	// character
 	sv.drawCharacter(img, elem.Character)
@@ -171,7 +177,7 @@ func (sv *sMyDuo) drawText(s string) *image.RGBA {
 			lines++
 			cursor = fixed.Int26_6(3 * 64)
 		}
-		sv.drawTextOnImg(img, f, v.Text, cursor, fixed.Int26_6(40*64+(lines*50*64)))
+		sv.drawTextOnImg(img, f, v.Text, cursor, fixed.Int26_6(40*64+(lines*52*64)))
 		cursor += w
 	}
 	if lines == 0 {

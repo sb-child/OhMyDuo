@@ -4,8 +4,8 @@ go 1.20
 
 require (
 	github.com/go-telegram/bot v0.7.13
-	github.com/gogf/gf/contrib/drivers/pgsql/v2 v2.4.3
-	github.com/gogf/gf/v2 v2.4.3
+	github.com/gogf/gf/contrib/drivers/pgsql/v2 v2.4.4
+	github.com/gogf/gf/v2 v2.4.4
 )
 
 require (
