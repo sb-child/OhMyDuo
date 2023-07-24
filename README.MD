@@ -1,5 +1,7 @@
 # Oh My Duo
 
+[![Go](https://github.com/sb-child/OhMyDuo/actions/workflows/go.yml/badge.svg)](https://github.com/sb-child/OhMyDuo/actions/workflows/go.yml) ![GitHub release](https://img.shields.io/github/v/release/sb-child/OhMyDuo)
+
 ## [> View the English version of README <](./translate/en/)
 
 ~~你是 [Duolingo](https://duolingo.com/) 的忠实用户吗？~~
@@ -18,6 +20,8 @@
 | <img src="https://my.sbchild.top:81/omd/_?c=lily&o=do%20not%20talk%20with%20me&t=不要和我讲话&x=fyufyudtry" width="50%"> |
 |                      https://my.sbchild.top:81 `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                      |
 
+你在用 Telegram 嘛? 快快试试 <https://t.me/sbchild_bot> 吧~
+
 ## 用途
 
 制作可爱贴纸！还可以在自己的主页上展示！
@@ -25,6 +29,8 @@
 ## 怎么用
 
 0. `clone`本项目, 或下载压缩包并解压
+
+> 不想自己编译的可以去 Release ![GitHub release](https://img.shields.io/github/v/release/sb-child/OhMyDuo) 下载预编译版
 
 1. 在 `manifest/config` 目录下, 复制`config.example.toml`到`config.toml`, 按需编辑`config.toml`:
 

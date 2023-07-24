@@ -1,5 +1,7 @@
 # Oh My Duo
 
+[![Go](https://github.com/sb-child/OhMyDuo/actions/workflows/go.yml/badge.svg)](https://github.com/sb-child/OhMyDuo/actions/workflows/go.yml) ![GitHub release](https://img.shields.io/github/v/release/sb-child/OhMyDuo)
+
 ## [> 查看中文版 README <](../../README.MD)
 
 Are you a loyal [Duolingo](https://duolingo.com/) user?
@@ -18,6 +20,8 @@ This repository can help you generate custom Duolingo stickers!
 | <img src="https://my.sbchild.top:81/omd/_?c=lily&o=do%20not%20talk%20with%20me&t=不要和我讲话&x=fyufyudtry" width="50%"> |
 |                      https://my.sbchild.top:81 `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                      |
 
+Are you a Telegram user? Try <https://t.me/sbchild_bot> !
+
 ## What can it do
 
 Make some cute stickers, and show it on your site easily!
@@ -25,6 +29,8 @@ Make some cute stickers, and show it on your site easily!
 ## How to use
 
 0. `clone` or download this repository
+
+> Download from ![GitHub release](https://img.shields.io/github/v/release/sb-child/OhMyDuo) if you don't want to build by yourself
 
 1. In `manifest/config`, copy `config.example.toml` to `config.toml`, then edit it:
 
