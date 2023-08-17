@@ -11,12 +11,16 @@ server:
 # ----------------------------------------------------------------
 # oh-my-duo 设置
 ohmyduo:
-  telegramBotToken: "YOUR_BOT_TOKEN_FROM_BOTFATHER"
-  telegramBotHttpTimeout: 10000 # 1000ms = 1s
-  telegramBotHttpProxy: "" # support http:// and socks5:// currently
-  telegramBotImageServer: "https://xxxxxx.xxxx/ohmyduo" # your OhMyDuo server or others...
-  discordBotToken: "YOUR_DISCORD_BOT_ACCESS_TOKEN"
-  discordBotGuild: "" # Test guild ID. If not passed - bot registers commands globally
-  discordBotCleanup: false # Remove all commands after shutdowning or not
   httpServer: true
   rootDir: "/ohmyduo" # OhMyDuo 服务器 URL 地址前缀
+
+  telegramBotToken: "YOUR_BOT_TOKEN_FROM_BOTFATHER"
+  telegramBotTimeout: 10000 # 1000ms = 1s
+  telegramBotProxy: "" # support http:// and socks5:// currently
+  telegramBotImageServer: "https://xxxxxx.xxxx/ohmyduo" # your OhMyDuo server or others...
+
+  discordBotToken: "YOUR_DISCORD_BOT_ACCESS_TOKEN"
+  discordBotGuild: "" # Test guild ID. If not passed - bot registers commands globally
+  discordBotTimeout: 20000 # 1000ms = 1s
+  discordBotProxy: "" # support http:// and socks5:// currently
+  discordBotCleanup: false # Remove all commands after shutdowning or not
