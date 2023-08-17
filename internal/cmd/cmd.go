@@ -3,7 +3,6 @@ package cmd
 import (
 	"context"
 	"os"
-	"sync"
 	"time"
 
 	"github.com/gogf/gf/v2/frame/g"
@@ -17,7 +16,7 @@ import (
 	tgbot "github.com/go-telegram/bot"
 )
 
-var tgBotLock sync.WaitGroup
+var tgBotLock = make(chan struct{})
 
 func StartHttpServer(ctx context.Context) {
 	s := g.Server("ohmyduo-http")
@@ -41,8 +40,9 @@ func StartTelegramServer(ctx context.Context, token string) {
 		tgbot.WithDefaultHandler(TelegramDefaultHandler))
 	if err != nil {
 		g.Log().Fatal(ctx, "Telegram bot start failed: "+err.Error())
+		// todo: auto restart
+		tgBotLock <- struct{}{}
 	}
-	tgBotLock.Add(1)
 	go func(ctx context.Context, x *tgbot.Bot) {
 		TelegramProcess(ctx, x)
 	}(ctx, bot)
@@ -63,7 +63,7 @@ func MainProcess(ctx context.Context, parser *gcmd.Parser) (err error) {
 		g.Log().Infof(ctx, "%s Signal received, stopping service...", sig.String())
 		if len(tgBotToken) > 0 {
 			tgCancel()
-			tgBotLock.Wait()
+			<- tgBotLock
 		}
 		if httpServer {
 			s := g.Server("ohmyduo-http")

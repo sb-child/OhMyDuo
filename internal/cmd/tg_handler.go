@@ -20,7 +20,7 @@ func TelegramProcess(ctx context.Context, bot *tgbot.Bot) {
 	g.Log().Infof(ctx, "Telegram bot: @%s [%d]", u.Username, u.ID)
 	bot.Start(ctx)
 	g.Log().Warning(ctx, "Telegram bot stopped.")
-	tgBotLock.Done()
+	tgBotLock <- struct{}{}
 }
 
 func TelegramDefaultHandler(ctx context.Context, bot *tgbot.Bot, update *tgmodels.Update) {
