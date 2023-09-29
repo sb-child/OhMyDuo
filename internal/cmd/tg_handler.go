@@ -17,11 +17,12 @@ func TelegramProcess(ctx context.Context, bot *tgbot.Bot) {
 	u, err := bot.GetMe(ctx)
 	if err != nil {
 		g.Log().Warning(ctx, "Failed to get telegram bot info: ", err.Error())
+		// todo: imporve it
 	}
 	g.Log().Infof(ctx, "Telegram bot: @%s [%d]", u.Username, u.ID)
 	bot.Start(ctx)
 	g.Log().Warning(ctx, "Telegram bot stopped.")
-	tgBotLock.Done()
+	tgBotLock <- struct{}{}
 }
 
 func TelegramDefaultHandler(ctx context.Context, bot *tgbot.Bot, update *tgmodels.Update) {

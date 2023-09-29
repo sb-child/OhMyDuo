@@ -3,16 +3,15 @@ module oh-my-duo
 go 1.20
 
 require (
+	github.com/bwmarrin/discordgo v0.27.1
 	github.com/go-telegram/bot v0.8.0
 	github.com/gogf/gf/contrib/drivers/pgsql/v2 v2.5.4
 	github.com/gogf/gf/v2 v2.5.4
 )
 
 require (
-	github.com/disintegration/imaging v1.6.2 // indirect
-	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
-	github.com/kr/text v0.2.0 // indirect
 	go.opentelemetry.io/otel/metric v1.19.0 // indirect
+	golang.org/x/crypto v0.13.0 // indirect
 )
 
 require (
