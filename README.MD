@@ -12,15 +12,17 @@
 
 |                               默认内容                               |
 | :------------------------------------------------------------------: |
-| <img src="https://my.sbchild.top:81/omd/_?x=fj32j340if" width="50%"> |
-|                  https://my.sbchild.top:81 `/omd/_`                  |
+| <img src="https://sbchild.top/omd/_?x=fj32j340if" width="50%"> |
+|                  https://sbchild.top `/omd/_`                  |
 
 |                                                   更改角色，原文和翻译                                                   |
 | :----------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://my.sbchild.top:81/omd/_?c=lily&o=do%20not%20talk%20with%20me&t=不要和我讲话&x=fyufyudtry" width="50%"> |
-|                      https://my.sbchild.top:81 `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                      |
+| <img src="https://sbchild.top/omd/_?c=lily&o=do%20not%20talk%20with%20me&t=不要和我讲话&x=fyufyudtry" width="50%"> |
+|                      https://sbchild.top `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                      |
 
 你在用 Telegram 嘛? 快快试试 <https://t.me/sbchild_bot> 吧~
+
+当然这个服务也有供大家try的网页版，[在这里](https://sbchild.top/blog/tools/duo)
 
 ## 用途
 
@@ -56,7 +58,7 @@
 
 4. 测试
 
-- 打开浏览器，输入`你的域名或ip地址/你的地址前缀/_`，例如`https://my.sbchild.top:81/omd/_`
+- 打开浏览器，输入`你的域名或ip地址/你的地址前缀/_`，例如`https://sbchild.top/omd/_`
 - 如果浏览器显示了一张多儿的照片，恭喜你，它能用啦
 
 5. 到底怎么用

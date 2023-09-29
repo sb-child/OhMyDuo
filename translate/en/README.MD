@@ -12,15 +12,17 @@ This repository can help you generate custom Duolingo stickers!
 
 |                           default content                            |
 | :------------------------------------------------------------------: |
-| <img src="https://my.sbchild.top:81/omd/_?x=fj32j340if" width="50%"> |
-|                  https://my.sbchild.top:81 `/omd/_`                  |
+| <img src="https://sbchild.top/omd/_?x=fj32j340if" width="50%"> |
+|                  https://sbchild.top `/omd/_`                  |
 
 |                                  change the character, origin text and translated text                                   |
 | :----------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://my.sbchild.top:81/omd/_?c=lily&o=do%20not%20talk%20with%20me&t=不要和我讲话&x=fyufyudtry" width="50%"> |
-|                      https://my.sbchild.top:81 `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                      |
+| <img src="https://sbchild.top/omd/_?c=lily&o=do%20not%20talk%20with%20me&t=不要和我讲话&x=fyufyudtry" width="50%"> |
+|                      https://sbchild.top `/omd/_?c=lily&o=do not talk with me&t=不要和我讲话`                      |
 
 Are you a Telegram user? Try <https://t.me/sbchild_bot> !
+
+And the web page for try out just [here](https://sbchild.top/blog/tools/duo)(currently Chinese...)
 
 ## What can it do
 
@@ -58,7 +60,7 @@ Make some cute stickers, and show it on your site easily!
 
 4. Test
 
-- Open your web browser and open `your-domain-or-ip/your-root-dir/_`, for example `https://my.sbchild.top:81/omd/_`
+- Open your web browser and open `your-domain-or-ip/your-root-dir/_`, for example `https://sbchild.top/omd/_`
 - If it shows a picture of Duo, then it finally works!
 
 5. Generate your own sticker
