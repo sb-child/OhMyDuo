@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git tag "$1"
+git tag "v_$1"
 
 git push --tags
 git push --all
