@@ -83,7 +83,13 @@ func (sv *sMyDuo) Draw(ctx context.Context, elem consts.MyDuoElements, toJpeg ..
 	ySize := flagImgY + 20 + originTextImgY + 20 + translatedTextImgY
 	translatedTextFix := 15
 	yBoxFix := -2
-	if originTextImgY >= 100 {
+	if originTextImgY == 53 {
+		// no changes
+	} else if originTextImgY == 100 {
+		yBoxFix = 3
+		translatedTextFix = 20
+	} else {
+		// todo: fine tune this
 		yBoxFix = 3
 		translatedTextFix = 20
 	}
@@ -142,7 +148,7 @@ func (sv *sMyDuo) drawText(s string) *image.RGBA {
 	// max width = 635 px
 	// text size = 64 px
 	// line spacing = 18 px
-	img := image.NewRGBA(image.Rect(0, 0, 635, 100))
+	img := image.NewRGBA(image.Rect(0, 0, 635, 400))
 	faceAsciiBold, err := opentype.NewFace(sv.FontAsciiBold, &opentype.FaceOptions{
 		Size:    44,
 		DPI:     72,
@@ -180,12 +186,18 @@ func (sv *sMyDuo) drawText(s string) *image.RGBA {
 		sv.drawTextOnImg(img, f, v.Text, cursor, fixed.Int26_6(40*64+(lines*52*64)))
 		cursor += w
 	}
+	println(lines)
+	yCropSize := 400
 	if lines == 0 {
-		crop := image.NewRGBA(image.Rect(0, 0, 635, 53))
-		draw.Draw(crop, crop.Bounds(), img, img.Bounds().Min, draw.Over)
-		return crop
+		yCropSize = 53
+	} else if lines == 1 {
+		yCropSize = 100
+	} else if lines == 2 {
+		yCropSize = 153
 	}
-	return img
+	crop := image.NewRGBA(image.Rect(0, 0, 635, yCropSize))
+	draw.Draw(crop, crop.Bounds(), img, img.Bounds().Min, draw.Over)
+	return crop
 }
 
 func (sv *sMyDuo) drawBox(img *image.RGBA, x1, y1, x2, y2 int, c color.RGBA, fill color.RGBA) {
